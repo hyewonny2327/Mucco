@@ -1,13 +1,14 @@
 {
-  "extends": [
-    "plugin:prettier/recommended",
-    "next/core-web-vitals",
-    "next/typescript"
-  ],
+  "extends": ["plugin:prettier/recommended", "next/core-web-vitals"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "warn",
-    "react/display-name": "warn"
+    "react/display-name": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
