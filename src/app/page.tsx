@@ -7,7 +7,6 @@ export default function Home() {
       <main>
         <h1>안녕하세요</h1>
         <h2>여기서 묵고 가, Mucco.</h2>
-        <h6>여기는 dev branch</h6>
       </main>
       <footer className={styles.footer}>
         <a
