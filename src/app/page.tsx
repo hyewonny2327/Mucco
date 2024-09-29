@@ -7,6 +7,7 @@ export default function Home() {
       <main>
         <h1>안녕하세요</h1>
         <h2>여기서 묵고 가, Mucco.</h2>
+        <h6>타입 체크 하고 배포 되는지 확인</h6>
       </main>
       <footer className={styles.footer}>
         <a
