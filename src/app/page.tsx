@@ -8,7 +8,7 @@ export default function Home() {
         <h1>안녕하세요</h1>
         <h2>여기서 묵고 가, Mucco.</h2>
         <h6>여기는 dev branch</h6>
-        <h6>타입 체크 여부 확인</h6>
+        <h6>dev 에 push 할 경우 vercel build 실행 안되어야함</h6>
       </main>
       <footer className={styles.footer}>
         <a
