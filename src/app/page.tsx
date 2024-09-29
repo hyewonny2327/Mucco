@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
         <h1>안녕하세요</h1>
         <h2>여기서 묵고 가, Mucco.</h2>
         <h6>여기는 dev branch</h6>
+        <h6>타입 체크 여부 확인</h6>
       </main>
       <footer className={styles.footer}>
         <a
@@ -54,5 +55,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
