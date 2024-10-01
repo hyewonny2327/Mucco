@@ -1,10 +1,9 @@
-import globalStyle from "../style/global.module.scss";
+import globalStyle from "./style/global.module.scss";
 import Link from "next/link";
-
 export default function Home() {
   return (
     <div>
-      <main>
+      <main className={globalStyle.main}>
         <h1>안녕하세요</h1>
         <h2>여기서 묵고 가, Mucco.</h2>
         <section className={globalStyle.navbar}>
