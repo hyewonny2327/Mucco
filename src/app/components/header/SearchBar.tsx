@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../style/mainPage.module.scss";
+import styles from "../../style/header.module.scss";
 import { IoIosSearch } from "react-icons/io";
 
 const SearchBar = () => {

@@ -1,0 +1,105 @@
+@import "./mixin.module.scss";
+
+.header {
+  // border-bottom: 1px solid #f4f4f4;
+  padding-bottom: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &__sharedSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 2.5rem;
+    align-items: center;
+  }
+
+  &__profile {
+    width: 5rem; // 80px => 5rem
+    height: 2.5rem; // 40px => 2.5rem
+    border-radius: 5rem;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    gap: 0.6875rem; // 11px => 0.6875rem
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    &__menu {
+      position: absolute;
+      top: 3rem;
+      right: 0;
+      z-index: 100;
+    }
+  }
+  &__horizontalLine {
+    width: 100vw;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    background-color: #f4f4f4;
+  }
+}
+
+.searchBar {
+  width: 66%;
+  height: 4.4375rem;
+  border-radius: 6.25rem;
+  border: 1px solid #f4f4f4;
+  margin-bottom: 1.18rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  justify-content: space-between;
+  @include desktop-1280 {
+    width: 53.125rem;
+  }
+
+  &__textArea {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 1.25rem;
+    gap: 0.375rem;
+    &__subtitle {
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+    &__title {
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+  }
+  &__verticalLine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid #f4f4f4;
+    height: 100%;
+  }
+}
+
+.searchResultBar {
+  @extend .searchBar;
+  height: 2.875rem;
+  margin-bottom: 0;
+}
+
+.menu {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.04);
+  &__text {
+    font-weight: 500;
+    font-size: 0.875rem;
+    width: 8.25rem;
+    cursor: pointer;
+    color: #646f7c;
+  }
+}

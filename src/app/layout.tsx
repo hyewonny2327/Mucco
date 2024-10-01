@@ -1,5 +1,5 @@
 import styles from "./style/global.module.scss";
-import Header from "./components/common/Header";
+import Header from "./components/header/Header";
 
 export default function RootLayout({
   children,
