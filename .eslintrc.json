@@ -7,8 +7,12 @@
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
+        "endOfLine": "auto",
+        "singleQuote": false
       }
-    ]
+    ],
+    "no-new-object": "warn",
+    "prefer-destructuring": "warn",
+    "keyword-spacing": "warn"
   }
 }
