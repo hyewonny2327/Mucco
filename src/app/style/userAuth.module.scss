@@ -1,0 +1,38 @@
+@import "./mixin.module.scss";
+@import "./variables.module.scss";
+
+.userAuth {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 420px;
+    gap: $size-40;
+    @include desktop-1280 {
+      width: 420px;
+    }
+  }
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $size-20;
+  }
+  &__title {
+    @include h1;
+    // margin-bottom: $size-20;
+  }
+  &__flexCenterRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $size-8;
+  }
+  &__flexStartRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $size-8;
+  }
+}

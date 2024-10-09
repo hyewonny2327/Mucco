@@ -1,3 +1,5 @@
+@import "./variables.module.scss";
+
 @mixin navbar {
   display: flex;
   flex-direction: column;
@@ -7,4 +9,36 @@
   @media (min-width: 1280px) {
     @content;
   }
+}
+
+//font size, weight
+@mixin h1 {
+  font-size: $font-size-24px;
+  font-weight: $font-weight-bold;
+}
+
+@mixin h2 {
+  font-size: $font-size-20px;
+  font-weight: $font-weight-semibold; // 20px 600 for 예약자 정보
+}
+
+@mixin h3 {
+  font-size: $font-size-20px;
+  font-weight: $font-weight-bold; // 20px 700 for subtitle
+}
+
+// Body
+@mixin h4 {
+  font-size: $font-size-16px;
+  font-weight: $font-weight-bold; // 16px 700 for button text, hotel name
+}
+
+@mixin h6 {
+  font-size: $font-size-14px;
+  font-weight: $font-weight-semibold; // 14px 600 for 약관동의 큰 글자, 회원가입 서브타이틀
+}
+
+@mixin p {
+  font-size: $font-size-12px;
+  font-weight: $font-weight-medium; // 12px 500 for 약관동의 작은 글자
 }
