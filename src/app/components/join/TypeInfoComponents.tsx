@@ -68,6 +68,7 @@ const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
               register={register}
               registerOptions={{ required: true }}
               isError={errors.verified && <span>오류</span>}
+              isTimer={true}
             />
           </div>
         </section>
