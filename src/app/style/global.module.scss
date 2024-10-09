@@ -1,25 +1,92 @@
 @import "./mixin.module.scss";
+
 .navbar {
   @include navbar;
 }
+
 .main {
   width: 100%;
 }
-
 .html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .body {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 
   @include desktop-1280 {
     width: 1280px;
   }
+}
+
+//font test
+
+.display1 {
+  @include display1-regular; // display1 스타일
+}
+
+.display2 {
+  @include display2-regular; // display2 스타일
+}
+
+.title1 {
+  @include title1-regular; // title1 스타일
+}
+
+.title2 {
+  @include title2-regular; // title2 스타일
+}
+
+.title3 {
+  @include title3-regular; // title3 스타일
+}
+
+.heading1 {
+  @include heading1-regular; // heading1 스타일
+}
+
+.heading2 {
+  @include heading2-regular; // heading2 스타일
+}
+
+.headline1 {
+  @include headline1-regular; // headline1 스타일
+}
+
+.headline2 {
+  @include headline2-regular; // headline2 스타일
+}
+
+.body1 {
+  @include body1-regular; // body1 스타일
+}
+
+.body2 {
+  @include body2-regular; // body2 스타일
+}
+
+.label1 {
+  @include label1-regular; // label1 스타일
+}
+
+.label2 {
+  @include label2-regular; // label2 스타일
+}
+
+.caption1 {
+  @include caption1-regular; // caption1 스타일
+}
+
+.caption2 {
+  @include caption2-regular; // caption2 스타일
 }

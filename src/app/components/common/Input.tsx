@@ -48,14 +48,7 @@ const Input: React.FC<InputProps> = ({
         {labelText}
       </label>
       <div className={styles.input__container}>
-        <div
-          className={cx(
-            styles.input__container__inputField,
-            isButton
-              ? styles.input__container__inputField__hasButton
-              : styles.input__container__inputField__noButton
-          )}
-        >
+        <div className={cx(styles.input__container__inputField)}>
           <input
             className={styles.input__container__inputField__text}
             placeholder={placeholder}

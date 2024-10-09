@@ -4,7 +4,7 @@
 .button {
   padding: $size-16 $size-20;
   border-radius: $size-12;
-  @include h4;
+  @include body1-semibold;
   cursor: pointer;
 
   &__color {
@@ -34,7 +34,7 @@
     }
     &__small {
       padding: $size-12 $size-16;
-      @include h6;
+      @include label2-semibold;
       line-height: 16.71px;
     }
   }
@@ -54,7 +54,7 @@
   gap: $size-4;
   width: 100%;
   &__label {
-    @include h6;
+    @include label1-semibold;
     line-height: $size-28;
     color: #646f7c;
   }
@@ -72,18 +72,11 @@
       justify-content: space-between;
       align-items: space-between;
       padding: $size-12 $size-16;
-      &__hasButton {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-
-        @include desktop-1280 {
-          width: 304px;
-        }
-      }
-      &__noButton {
-        width: 100%;
-      }
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      //input 창은 남은 너비를 다 채운다
+      flex-grow: 1;
       &__text {
         background: none;
         border: none;
@@ -96,9 +89,9 @@
       }
     }
     &buttonContainer {
-      @include desktop-1280 {
-        width: 108px;
-      }
+      //버튼은 고정된 크기를 유지한다.
+      flex-shrink: 0;
+      white-space: nowrap;
     }
   }
 }

@@ -17,6 +17,51 @@ export default function Home() {
           <Link href={"/reservation/confirmation"}>
             reservation-confirmation
           </Link>
+          <div className={globalStyle.caption2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.caption1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.label2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.label1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.body2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.body1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.headline2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.headline1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.heading2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.heading1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.title3}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.title2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.title1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.display2}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
+          <div className={globalStyle.display1}>
+            안녕하세요. 여기서 묵고 가, Mucco
+          </div>
         </section>
         <section></section>
       </main>

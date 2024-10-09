@@ -18,7 +18,7 @@
     gap: $size-20;
   }
   &__title {
-    @include h1;
+    @include title3-bold;
     // margin-bottom: $size-20;
   }
   &__flexCenterRow {
