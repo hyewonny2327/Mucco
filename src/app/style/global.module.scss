@@ -16,6 +16,8 @@
   min-height: 100vh;
   margin: 0;
   padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
 
   @include desktop-1280 {
     width: 1280px;

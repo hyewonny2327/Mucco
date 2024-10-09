@@ -18,6 +18,7 @@ export default function Home() {
             reservation-confirmation
           </Link>
         </section>
+        <section></section>
       </main>
       <footer></footer>
     </div>
