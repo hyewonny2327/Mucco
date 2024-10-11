@@ -12,7 +12,9 @@ type TypeInfoComponentsProps = {
 export type userJoinInputsType = {
   name: string;
   phone: string;
-  verified: number;
+  password: string;
+  confirmPassword: string;
+  verifiedNumber: number;
 };
 const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
   setIsTermsPage,
@@ -43,8 +45,11 @@ const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
           type="text"
           placeholder="이름을 입력하세요"
           register={register}
-          registerOptions={{ required: true, maxLength: 20 }}
-          isError={errors.name && <span>오류</span>}
+          registerOptions={{
+            required: "이름은 필수 입력 항목입니다.",
+            maxLength: 20,
+          }}
+          isError={errors.name}
         />
         <section className={styles.userAuth__phone__container}>
           <Input
@@ -54,30 +59,82 @@ const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
             type="phone"
             placeholder="01012345678"
             register={register}
-            registerOptions={{ required: true }}
-            isError={errors.name && <span>오류</span>}
+            registerOptions={{
+              required: "전화번호는 필수 입력 항목입니다.",
+              pattern: {
+                value: /^01[0-9]{8,9}$/, // 전화번호 형식
+                message: "유효한 전화번호를 입력해주세요. (예: 01012345678)",
+              },
+            }}
+            isError={errors.phone}
             isButton={true}
             buttonText="인증번호전송"
           />
           <div>
             <Input
-              id="verified"
-              name="verified"
+              id="verifiedNumber"
+              name="verifiedNumber"
               type="text"
               placeholder="인증번호를 입력하세요"
               register={register}
-              registerOptions={{ required: true }}
-              isError={errors.verified && <span>오류</span>}
+              registerOptions={{
+                required: "인증번호를 입력하세요",
+                maxLength: {
+                  value: 6,
+                  message: "유효한 인증번호를 입력하세요",
+                },
+              }}
+              isError={errors.verifiedNumber}
               isTimer={true}
             />
           </div>
         </section>
+        <Input
+          labelText="비밀번호"
+          id="password"
+          name="password"
+          type="password"
+          placeholder="비밀번호를 입력하세요"
+          register={register}
+          registerOptions={{
+            required: "비밀번호는 필수 입력 항목입니다.",
+            maxLength: {
+              value: 20,
+              message: "20자리 이하의 비밀번호를 입력해주세요",
+            },
+            minLength: {
+              value: 4,
+              message: "4자리 이상의 비밀번호를 입력해주세요",
+            },
+          }}
+          isError={errors.password}
+        />
+        <Input
+          labelText="비밀번호 확인"
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          placeholder="비밀번호를 다시 입력하세요"
+          register={register}
+          registerOptions={{
+            required: "비밀번호 확인은 필수 입력 항목입니다.",
+            validate: (value) =>
+              value === watch("password") || "비밀번호가 일치하지 않습니다.", // 입력된 비밀번호와 비교
+          }}
+          isError={errors.confirmPassword}
+        />
 
-        <input type="submit" />
+        <input type="submit" id="submit" className={styles.userAuth__submit} />
+        <label htmlFor="submit">
+          <Button
+            color="black"
+            size="large"
+            onClick={() => setIsTermsPage(false)}
+          >
+            다음
+          </Button>
+        </label>
       </form>
-      <Button color="black" size="large" onClick={() => setIsTermsPage(false)}>
-        다음
-      </Button>
     </section>
   );
 };

@@ -35,4 +35,7 @@
     align-items: center;
     gap: $size-8;
   }
+  &__submit {
+    display: none;
+  }
 }

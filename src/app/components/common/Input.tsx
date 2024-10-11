@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+"use client";
+import React, { ReactNode, useEffect } from "react";
 import styles from "../../style/commonComponents.module.scss";
-import { RegisterOptions, UseFormRegister } from "react-hook-form";
+import { FieldError, RegisterOptions, UseFormRegister } from "react-hook-form";
 import { userJoinInputsType } from "../join/TypeInfoComponents";
 import Button from "./Button";
 import cx from "classnames";
@@ -21,7 +22,7 @@ type InputProps = {
     userJoinInputsType,
     keyof userJoinInputsType
   >;
-  isError?: ReactNode;
+  isError?: FieldError | undefined;
   isButton?: boolean;
   buttonText?: string;
 };
@@ -48,7 +49,12 @@ const Input: React.FC<InputProps> = ({
         {labelText}
       </label>
       <div className={styles.input__container}>
-        <div className={cx(styles.input__container__inputField)}>
+        <div
+          className={cx(
+            styles.input__container__inputField,
+            isError && styles.input__container__inputField__error
+          )}
+        >
           <input
             className={styles.input__container__inputField__text}
             placeholder={placeholder}
@@ -67,14 +73,16 @@ const Input: React.FC<InputProps> = ({
           {isTimer && <div>timer</div>}
         </div>
         {isButton && (
-          <div className={styles.input__buttonContainer}>
+          <div className={cx(styles.input__buttonContainer)}>
             <Button color="disabled" size="small">
               {buttonText}
             </Button>
           </div>
         )}
       </div>
-      <div className={styles.input__error}>{isError}</div>
+      {isError && (
+        <div className={styles.input__errorMessage}>{isError.message}</div>
+      )}
     </section>
   );
 };
