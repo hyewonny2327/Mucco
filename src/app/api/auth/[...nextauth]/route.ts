@@ -1,6 +1,8 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { type NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
@@ -10,9 +12,42 @@ export const authOptions: NextAuthOptions = {
     updateAge: 60 * 60 * 2,
   },
   adapter: PrismaAdapter(prisma),
-  providers: [],
-  pages: {},
-  callbacks: {},
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
+  ],
+  pages: { signIn: "/login" },
+  callbacks: {
+    async signIn({ user }) {
+      const existingUser = await prisma.user.findUnique({
+        where: { email: user.email as string },
+      });
+      //최초 로그인 시 join 페이지로 이동
+      if (!existingUser) {
+        return "/join";
+      }
+      // 전화번호가 없을 경우 join페이지로 이동
+      if (existingUser && existingUser.phone === null) {
+        return "/join";
+      }
+      return true; // 정상적으로 로그인
+    },
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: token.sub || session.user?.id,
+      },
+    }),
+    jwt: async ({ user, token }) => {
+      if (user && user.id) {
+        token.sub = user.id;
+      }
+      return token;
+    },
+  },
 };
 const handler = NextAuth(authOptions);
 

@@ -1,5 +1,6 @@
 import styles from "./style/global.module.scss";
 import Header from "./components/header/Header";
+import { NextProvider } from "./providers";
 
 export default function RootLayout({
   children,
@@ -9,8 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={styles.html}>
       <body className={styles.body}>
-        <Header />
-        {children}
+        <NextProvider>
+          <Header />
+          {children}
+        </NextProvider>
       </body>
     </html>
   );

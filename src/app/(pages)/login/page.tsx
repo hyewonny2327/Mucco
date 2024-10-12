@@ -1,3 +1,4 @@
+"use client";
 import Button from "@/app/components/common/Button";
 import CenteredContainer from "@/app/components/common/CenterContainer";
 import React from "react";
@@ -5,7 +6,20 @@ import styles from "../../style/userAuth.module.scss";
 import Image from "next/image";
 import logoKakao from "../../assets/svg/logoKakao.svg";
 import logoNaver from "../../assets/svg/logoNaver.svg";
+import { signIn, useSession } from "next-auth/react";
 const loginPage = () => {
+  const session = useSession();
+  function handleClickGoogle() {
+    try {
+      signIn("google", { callbackUrl: "/" });
+      console.log("구글로그인 시도", session.status);
+    } catch (e) {
+      console.log(e), alert("다시 시도해주세요");
+    }
+    console.log("구글로그인 시도", session.status);
+
+    console.log(session.data?.user);
+  }
   return (
     <CenteredContainer>
       <section className={styles.userAuth__container}>
@@ -27,7 +41,7 @@ const loginPage = () => {
               <div>네이버로 시작하기</div>
             </div>
           </Button>
-          <Button size="large" color="outlined">
+          <Button size="large" color="outlined" onClick={handleClickGoogle}>
             구글 계정으로 계속하기
           </Button>
           <Button size="large" color="outlined">
