@@ -11,28 +11,29 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
   id    String    @id @default(uuid())
   email String    @unique
   name  String?
+  phone String?
   image String?
   rooms Room[]
 }
 
 model Room{
-  id    Int   @id @default(autoincrement())
-  title String
-  address String
-  images  String[]
-  lat String
-  lng String
+  id        Int       @id @default(autoincrement())
+  title     String
+  address   String
+  images    String[]
+  lat       String
+  lng       String
   category  String
-  desc  String
-  price Int
-  
-  userId  String 
-  user    User  @relation(fields:[userId],references: [id],onDelete: Cascade)
+  desc      String
+  price     Int
+  userId    String 
+  user      User      @relation(fields:[userId],references: [id],onDelete: Cascade)
   @@index([userId])
 }
