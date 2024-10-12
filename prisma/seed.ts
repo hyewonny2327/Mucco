@@ -26,13 +26,7 @@ const CATEGORY = [
   "서핑",
   "골프장",
 ];
-type UserType = {
-  name: string | null;
-  id: string;
-  email: string;
-  image: string | null;
-  phone: string | null;
-};
+
 async function seedUsers() {
   const userData = Array.from({ length: 10 }).map(() => ({
     email: faker.internet.email(),
