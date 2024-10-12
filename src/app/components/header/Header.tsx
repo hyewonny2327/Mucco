@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../assets/svg/logo.svg";
 import defaultProfile from "../../assets/svg/defaultProfile.svg";
-import { IoIosMenu } from "react-icons/io";
+import { HiOutlineMenu } from "react-icons/hi";
 
 import styles from "../../style/header.module.scss";
 import SearchBar from "./SearchBar";
@@ -42,7 +42,7 @@ const Header = () => {
             height={34}
           ></Image>
           {/* gray4 #646F7C */}
-          <IoIosMenu color="#646F7C" size="24" />
+          <HiOutlineMenu color="#646F7C" size="24" />
         </section>
         {!isMenuClosed && (
           <div

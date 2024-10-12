@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../style/header.module.scss";
-import { IoIosSearch } from "react-icons/io";
+import { HiOutlineSearch } from "react-icons/hi";
 
 const SearchResultBar = () => {
   return (
@@ -18,7 +18,7 @@ const SearchResultBar = () => {
         <div className={styles.searchResultBar__verticalLine}></div>
         <div className={styles.searchResultBar__textArea__title}>3명</div>
       </div>
-      <IoIosSearch size={24} color="#333333" />
+      <HiOutlineSearch size={24} color="#333333" />
     </section>
   );
 };

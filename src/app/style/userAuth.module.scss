@@ -16,6 +16,12 @@
     display: flex;
     flex-direction: column;
     gap: $size-20;
+    &__terms {
+      padding: 0 $size-24;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   &__title {
     @include title3-bold;
@@ -34,5 +40,8 @@
     justify-content: flex-start;
     align-items: center;
     gap: $size-8;
+  }
+  &__submit {
+    display: none;
   }
 }

@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "../../style/userAuth.module.scss";
 import Button from "@/app/components/common/Button";
-import { IoCheckmark } from "react-icons/io5";
+import { HiOutlineCheck } from "react-icons/hi";
+import { HiOutlineChevronRight } from "react-icons/hi";
+
 import { TermsType } from "@/app/(pages)/join/page";
+import Checkbox from "../common/Checkbox";
 
 type TermsComponentsProps = {
   terms: TermsType;
@@ -27,14 +30,15 @@ const TermsComponents: React.FC<TermsComponentsProps> = ({
       <section className={styles.userAuth__buttonContainer}>
         <Button color="disabled" isDisabled={true} size="large">
           <div className={styles.userAuth__flexStartRow}>
-            <IoCheckmark color="#000" size="16" />
+            <HiOutlineCheck color="#000" size="16" />
             <div>약관전체동의</div>
           </div>
         </Button>
         {terms.map((term, index) => (
-          <div key={index}>
+          <div key={index} className={styles.userAuth__buttonContainer__terms}>
             {/* 아코디언 버튼 컴포넌트로 교체 필요  */}
-            {term.text}
+            <Checkbox text={term.text} />
+            <HiOutlineChevronRight color="#646F7C" size="12" />
           </div>
         ))}
       </section>
