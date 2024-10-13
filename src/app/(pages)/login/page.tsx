@@ -7,7 +7,7 @@ import Image from "next/image";
 import logoKakao from "../../assets/svg/logoKakao.svg";
 import logoNaver from "../../assets/svg/logoNaver.svg";
 import { signIn, useSession } from "next-auth/react";
-const loginPage = () => {
+const LoginPage = () => {
   const session = useSession();
   function handleClickGoogle() {
     try {
@@ -53,4 +53,4 @@ const loginPage = () => {
   );
 };
 
-export default loginPage;
+export default LoginPage;
