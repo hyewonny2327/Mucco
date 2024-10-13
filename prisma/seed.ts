@@ -51,6 +51,7 @@ async function seedRooms(
     email: string;
     name: string | null;
     image: string | null;
+    phone?: string | null;
   }[]
 ) {
   if (totalUsers?.length > 1) {
@@ -138,6 +139,7 @@ async function main() {
       email: true,
       name: true,
       image: true,
+      phone: true,
     },
   });
 
