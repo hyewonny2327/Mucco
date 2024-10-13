@@ -95,7 +95,6 @@ async function seedRooms(
           faker.commerce.price({ min: 50000, max: 500000, dec: 0 })
         ),
         userId: randomUser.id,
-        phone: faker.phone.number,
       };
 
       console.log(room);
