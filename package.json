@@ -26,6 +26,7 @@
     "sass": "^1.79.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
     "@types/faker": "^6.6.9",
     "@types/node": "^20",
     "@types/react": "^18",

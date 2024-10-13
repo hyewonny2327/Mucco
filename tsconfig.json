@@ -19,7 +19,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "./node_modules/@faker-js/faker"]
   },
   "include": [
     "next-env.d.ts",
