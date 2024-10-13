@@ -26,6 +26,13 @@ const CATEGORY = [
   "서핑",
   "골프장",
 ];
+type UserType = {
+  id: string;
+  email: string;
+  name: string | null;
+  image: string | null;
+  phone?: string | null; // 선택적 필드로 정의
+};
 
 async function seedUsers() {
   const userData = Array.from({ length: 10 }).map(() => ({
@@ -45,15 +52,7 @@ async function seedUsers() {
   }
 }
 
-async function seedRooms(
-  totalUsers: {
-    id: string;
-    email: string;
-    name: string | null;
-    image: string | null;
-    phone?: string | null;
-  }[]
-) {
+async function seedRooms(totalUsers: UserType[]) {
   if (totalUsers?.length > 1) {
     // for...of를 사용하여 비동기 작업 처리
     for (const _ of Array.from({ length: 20 })) {
@@ -133,15 +132,7 @@ function getRandomLongitude() {
 async function main() {
   await seedUsers();
 
-  const totalUsers = await prisma.user.findMany({
-    select: {
-      id: true,
-      email: true,
-      name: true,
-      image: true,
-      phone: true,
-    },
-  });
+  const totalUsers: UserType[] = await prisma.user.findMany();
 
   if (totalUsers?.length > 1) {
     await seedRooms(totalUsers);
