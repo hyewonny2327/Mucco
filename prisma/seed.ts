@@ -133,7 +133,15 @@ function getRandomLongitude() {
 async function main() {
   await seedUsers();
 
-  const totalUsers = await prisma.user.findMany();
+  const totalUsers = await prisma.user.findMany({
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      image: true,
+      phone: true,
+    },
+  });
 
   if (totalUsers?.length > 1) {
     await seedRooms(totalUsers);
