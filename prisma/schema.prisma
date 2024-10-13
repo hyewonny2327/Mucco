@@ -11,28 +11,66 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
+
+model Account {
+  id                 String    @id @default(cuid())
+  userId              String    @map("user_id")
+  type                 String?
+  provider           String
+  providerAccountId  String    @map("provider_account_id")
+  token_type         String?
+  refresh_token      String?   @db.Text
+  access_token       String?   @db.Text
+  expires_at         Int?
+  scope              String?
+  id_token           String? @db.Text
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String?  @map("user_id")
+  sessionToken String   @db.Text @map("session_token") @unique
+  accessToken  String?  @db.Text @map("access_token")
+  expires      DateTime
+  user         User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("sessions")
+}
+
 
 model User {
   id    String    @id @default(uuid())
   email String    @unique
+  emailVerified   Boolean?
   name  String?
+  phone String?
   image String?
   rooms Room[]
+  account Account[]
+  sessions Session[]
 }
 
 model Room{
-  id    Int   @id @default(autoincrement())
-  title String
-  address String
-  images  String[]
-  lat String
-  lng String
+  id        Int       @id @default(autoincrement())
+  title     String
+  address   String
+  images    String[]
+  lat       String
+  lng       String
   category  String
-  desc  String
-  price Int
-  
-  userId  String 
-  user    User  @relation(fields:[userId],references: [id],onDelete: Cascade)
+  desc      String
+  price     Int
+  userId    String 
+  user      User      @relation(fields:[userId],references: [id],onDelete: Cascade)
   @@index([userId])
 }
