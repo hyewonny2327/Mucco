@@ -28,10 +28,10 @@ const CATEGORY = [
 ];
 type UserType = {
   id: string;
-  email: string;
+  email?: string | null;
   name: string | null;
-  image: string | null;
-  phone?: string | null; // 선택적 필드로 정의
+  image?: string | null;
+  phone?: string | null;
 };
 
 async function seedUsers() {

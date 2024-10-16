@@ -1,5 +1,5 @@
 @import "./mixin.module.scss";
-
+@import "./variables.module.scss";
 .header {
   // border-bottom: 1px solid #f4f4f4;
   padding-bottom: 1.3rem;
@@ -116,11 +116,14 @@
 }
 
 .menu {
-  padding: 1.5rem;
+  padding: $size-20;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.04);
+  gap: $size-16;
+  border-radius: $size-12;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 12px 0px #0000000a;
+
   &__text {
     @include label1-semibold;
     width: 8.25rem;
