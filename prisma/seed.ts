@@ -1,7 +1,5 @@
-import { PrismaClient, User } from "@prisma/client";
 import { fakerKO as faker } from "@faker-js/faker";
-
-const prisma = new PrismaClient();
+import prisma from "@/app/lib/prisma";
 const CATEGORY = [
   "전망좋은",
   "자연",
@@ -28,10 +26,10 @@ const CATEGORY = [
 ];
 type UserType = {
   id: string;
-  email: string;
+  email?: string | null;
   name: string | null;
-  image: string | null;
-  phone?: string | null; // 선택적 필드로 정의
+  image?: string | null;
+  phone?: string | null;
 };
 
 async function seedUsers() {

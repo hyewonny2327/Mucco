@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../../style/userAuth.module.scss";
 import Button from "@/app/components/common/Button";
-import { TermsType } from "@/app/(pages)/join/page";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../common/Input";
-import { RegisterOptions } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { updateUser, updateUserInputsType } from "@/app/api/user/userApi";
+import { useRouter } from "next/navigation";
 
 type TypeInfoComponentsProps = {
   setIsTermsPage: (value: boolean) => void;
@@ -16,6 +17,7 @@ export type userJoinInputsType = {
   confirmPassword: string;
   verifiedNumber: number;
 };
+
 const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
   setIsTermsPage,
 }) => {
@@ -25,8 +27,29 @@ const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
     watch,
     formState: { errors },
   } = useForm<userJoinInputsType>();
-  const onSubmit: SubmitHandler<userJoinInputsType> = (data) =>
-    console.log(data);
+
+  const router = useRouter();
+  const mutation = useMutation<number, Error, updateUserInputsType>({
+    mutationFn: updateUser,
+    onSuccess: (status) => {
+      if (status === 200) {
+        alert("정보 등록이 완료되었습니다.");
+        router.replace("/");
+      }
+    },
+    onError: (error) => {
+      console.error("Error updating user:", error);
+      alert("정보 등록에 실패했습니다.");
+    },
+  });
+  const onSubmit: SubmitHandler<userJoinInputsType> = async (data) => {
+    //비밀번호는 저장 안했음 => 나중에 수정!!!
+    const updateData = {
+      name: data.name,
+      phone: data.phone,
+    };
+    await mutation.mutate(updateData);
+  };
   return (
     <section className={styles.userAuth__container}>
       <div className={styles.userAuth__title}>
@@ -126,11 +149,7 @@ const TypeInfoComponents: React.FC<TypeInfoComponentsProps> = ({
 
         <input type="submit" id="submit" className={styles.userAuth__submit} />
         <label htmlFor="submit">
-          <Button
-            color="black"
-            size="large"
-            onClick={() => setIsTermsPage(false)}
-          >
+          <Button color="black" size="large">
             다음
           </Button>
         </label>
