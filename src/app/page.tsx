@@ -4,13 +4,13 @@ import globalStyle from "./style/global.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 export default function Home() {
-  const session = useSession();
+  const { data: session } = useSession();
   return (
     <div>
       <main className={globalStyle.main}>
         {session ? (
           <div>
-            <h1>{session.data?.user.name} 님 안녕하세요!!</h1>
+            <h1>{session.user.name} 님 안녕하세요!!</h1>
             <h2>오늘도 뽜이팅!</h2>
             <Image
               src={"/images/myImage.jpg"}
