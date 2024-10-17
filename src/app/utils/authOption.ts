@@ -1,10 +1,9 @@
+import prisma from "@/app/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import NaverProvider from "next-auth/providers/naver";
 import KakaoProvider from "next-auth/providers/kakao";
-const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
   debug: true,
@@ -31,9 +30,24 @@ export const authOptions: NextAuthOptions = {
   ],
   pages: { signIn: "/login" },
   callbacks: {
-    async session({ session, token }) {
-      session.user = token as any;
-      return session;
+    async signIn() {
+      return true; // 정상적으로 로그인
+    },
+    async redirect() {
+      return "/redirect"; // 로그인 후 리디렉션할 페이지
+    },
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: token.sub,
+      },
+    }),
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.sub = user.id;
+      }
+      return token;
     },
   },
 };

@@ -1,7 +1,5 @@
-import { PrismaClient, User } from "@prisma/client";
 import { fakerKO as faker } from "@faker-js/faker";
-
-const prisma = new PrismaClient();
+import prisma from "@/app/lib/prisma";
 const CATEGORY = [
   "전망좋은",
   "자연",
