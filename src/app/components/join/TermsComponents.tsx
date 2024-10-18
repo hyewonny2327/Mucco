@@ -10,15 +10,24 @@ import Checkbox from "../common/Checkbox";
 type TermsComponentsProps = {
   terms: TermsType;
   setIsTermsPage: (value: boolean) => void;
+  setTerms: React.Dispatch<React.SetStateAction<TermsType>>;
 };
 
 const TermsComponents: React.FC<TermsComponentsProps> = ({
   terms,
   setIsTermsPage,
+  setTerms,
 }) => {
-  function handleNextButtonClick(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleClickNextButton(e: React.MouseEvent<HTMLButtonElement>) {
     // e.preventDefault();
     setIsTermsPage(false);
+  }
+  function handleClickCheckbox(index: number) {
+    setTerms((prevTerms) =>
+      prevTerms.map((term, i) =>
+        i === index ? { ...term, isCheck: !term.isCheck } : term
+      )
+    );
   }
   return (
     <section className={styles.userAuth__container}>
@@ -37,12 +46,16 @@ const TermsComponents: React.FC<TermsComponentsProps> = ({
         {terms.map((term, index) => (
           <div key={index} className={styles.userAuth__buttonContainer__terms}>
             {/* 아코디언 버튼 컴포넌트로 교체 필요  */}
-            <Checkbox text={term.text} />
+            <Checkbox
+              text={term.text}
+              isCheck={term.isCheck}
+              setIsCheck={() => handleClickCheckbox(index)}
+            />
             <HiOutlineChevronRight color="#646F7C" size="12" />
           </div>
         ))}
       </section>
-      <Button color="black" size="large" onClick={handleNextButtonClick}>
+      <Button color="black" size="large" onClick={handleClickNextButton}>
         다음
       </Button>
     </section>

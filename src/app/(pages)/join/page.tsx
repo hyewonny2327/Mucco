@@ -4,46 +4,61 @@ import TermsComponents from "@/app/components/join/TermsComponents";
 import TypeInfoComponents from "@/app/components/join/TypeInfoComponents";
 import React, { useState } from "react";
 
-export type TermsType = { id: number; required: boolean; text: string }[];
+export type TermsType = {
+  id: number;
+  required: boolean;
+  isCheck: boolean;
+  text: string;
+}[];
 const JoinPage = () => {
   //이것도 api로 불러오면 좋겠다 (관리자 메뉴에서 변경할 수 있으니)
-  const terms: TermsType = [
+  const [terms, setTerms] = useState<TermsType>([
     {
       id: 1,
       required: true,
+      isCheck: false,
       text: "(필수) 이용약관",
     },
     {
       id: 2,
       required: true,
+      isCheck: false,
       text: "(필수) 만 14세 이상 확인",
     },
     {
       id: 3,
       required: true,
+      isCheck: false,
       text: "(필수) 개인정보 수집 및 이용 동의",
     },
     {
       id: 4,
       required: false,
+      isCheck: false,
       text: "(선택) 개인정보 수집 및 이용 동의",
     },
     {
       id: 5,
       required: false,
+      isCheck: false,
       text: "(선택) 마케팅 알림 수신 동의",
     },
     {
       id: 6,
       required: false,
+      isCheck: false,
       text: "(선택) 위치기반 서비스 이용약관 동의",
     },
-  ];
+  ]);
   const [isTermsPage, setIsTermsPage] = useState(true);
   return (
     <CenteredContainer>
       {isTermsPage && (
-        <TermsComponents terms={terms} setIsTermsPage={setIsTermsPage} />
+        <TermsComponents
+          terms={terms}
+          setIsTermsPage={setIsTermsPage}
+          setTerms={setTerms}
+        />
       )}
       {!isTermsPage && <TypeInfoComponents setIsTermsPage={setIsTermsPage} />}
     </CenteredContainer>

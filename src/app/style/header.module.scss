@@ -21,7 +21,7 @@
     width: 5rem; // 80px => 5rem
     height: 2.5rem; // 40px => 2.5rem
     border-radius: 5rem;
-    background-color: #f4f4f4;
+    background-color: $gray-50;
     display: flex;
     justify-content: center;
     gap: 0.6875rem; // 11px => 0.6875rem
@@ -41,7 +41,7 @@
     height: 1px;
     position: absolute;
     bottom: 0;
-    background-color: #f4f4f4;
+    background-color: $gray-50;
   }
 }
 
@@ -49,7 +49,7 @@
   width: 66%;
   height: 4.4375rem;
   border-radius: 6.25rem;
-  border: 1px solid #f4f4f4;
+  border: 1px solid $gray-50;
   margin-bottom: 1.18rem;
   display: flex;
   align-items: center;
@@ -68,18 +68,18 @@
 
     &__subtitle {
       @include caption1-medium;
-      color: #9aa0b0;
+      color: $gray-400;
     }
     &__title {
       @include label1-semibold;
-      color: #161d24;
+      color: $gray-900;
     }
   }
   &__verticalLine {
     position: absolute;
     left: 0;
     top: 0;
-    border: 1px solid #f7f8f9;
+    border: 1px solid $gray-50;
     height: 100%;
   }
 }
@@ -99,18 +99,18 @@
     justify-content: center;
     &__subtitle {
       @include caption1-medium;
-      color: #9aa0b0;
+      color: $gray-400;
     }
     &__title {
       @include label1-semibold;
-      color: #333333;
+      color: $gray-900;
     }
   }
   &__verticalLine {
     position: absolute;
     left: 0;
     top: 0;
-    border: 1px solid #f7f8f9;
+    border: 1px solid $gray-50;
     height: 100%;
   }
 }
@@ -121,13 +121,13 @@
   flex-direction: column;
   gap: $size-16;
   border-radius: $size-12;
-  background-color: #ffffff;
+  background-color: $white;
   box-shadow: 0px 0px 12px 0px #0000000a;
 
   &__text {
     @include label1-semibold;
     width: 8.25rem;
     cursor: pointer;
-    color: #646f7c;
+    color: $gray-500;
   }
 }
